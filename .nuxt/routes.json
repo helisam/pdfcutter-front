@@ -1,0 +1,23 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "C:\\\\Projetos-novos\\\\Damiana\\\\frontend\\\\pdfcutter\\\\pages\\\\inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_33514f4a"
+  },
+  {
+    "name": "upload",
+    "path": "/upload",
+    "component": "C:\\\\Projetos-novos\\\\Damiana\\\\frontend\\\\pdfcutter\\\\pages\\\\upload.vue",
+    "chunkName": "pages/upload",
+    "_name": "_492af1e0"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Projetos-novos\\\\Damiana\\\\frontend\\\\pdfcutter\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_61d18eda"
+  }
+]
