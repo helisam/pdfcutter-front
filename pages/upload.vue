@@ -5,8 +5,12 @@
         </v-overlay>
         <v-layout row wrap align-center>
             <v-flex xs6 offset-xs3>
+                <br>
+                <label>Favor enviar comprovante com mais de 1 página (Duh!)</label>
+                <br>
+                <br>
                 <v-text-field v-model="fileName" name="pdf" outline background-color="d8dcd6" color="blue"
-                    label="Selecione o pdf" @click="selectFile" />
+                    label="Clique para incluir pdf" @click="selectFile" />
                 <input ref="pdf" class="hide-input" type="file" accept="application/pdf" @change="fileSelected">
                 <v-btn class="upload-button" color="121212" @click="upload_file">
                     Enviar
@@ -20,6 +24,7 @@
   
 <script>
 import uploadService from '@/services/uploadService.js';
+import { saveAs } from 'file-saver';
 
 export default {
     name: 'FileUpload',
@@ -36,15 +41,7 @@ export default {
             this.pdf = this.$refs.pdf.click()
         },
         async forceFileDownload(response) {
-            let blob = await new Blob([response.data], {
-                type: 'application/zip',
-            });
-            let title = new Date().getTime();
-            let link = document.createElement('a');
-            link.download = `${title}.zip`;
-            link.href = window.URL.createObjectURL(blob);
-            link.click();
-            window.URL.revokeObjectURL(link.href);
+            saveAs(new Blob([response.data], { type: 'application/octet-stream' }), 'teste.zip', { autoBOM: false });
             this.overlay = false;
         },
         async uploadFile(formData) {
@@ -60,7 +57,7 @@ export default {
                     // this.$refs.myVueDropzone.removeFile(formData);
                 }
             } catch (e) {
-                this.failed();
+                this.failed(e);
             }
         },
         fileSelected(e) {
@@ -70,6 +67,9 @@ export default {
         },
         async upload_file() {
             await this.uploadFile(this.pdf)
+        },
+        failed(e){
+            console.log(e)
         }
     },
     mounted() {

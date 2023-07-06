@@ -2,11 +2,12 @@ import axios from 'axios';
 
 //Axios creates
 const axiosUpload = axios.create({
-  baseURL: 'https://pyapi--helisam.repl.co/api/v1',
+  // baseURL: 'https://pyapi--helisam.repl.co/api/v1',
+  baseURL: 'http://localhost:5000/api/v1',
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Accepted: 'application/json',
-    'Content-Type': 'application/json',
+    Accepted: 'application/*',
+    'Content-Type': 'application/*'
   },
 });
 
